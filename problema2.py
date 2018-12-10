@@ -89,3 +89,44 @@ PE = funcoes.P(difcuSumario, PEUtilizaWordDificuSumario)
 
 probQt2 = PA * PE / PE
 print("Probabilidade é de: %.1f%%" % (probQt2 * 100))
+
+print('\n')
+print("4. Dado que uma pessoa indique que utiliza o ambiente Word e seu problema de edição de trabalhos acadêmicos seja Criação de sumários qual a probabilidade de que ela gostaria\n que uma ferramenta de edição fornecesse como ajuda a Criação automática de sumários?")
+
+
+def utilizaWord(r): return 'usaWord' in r
+
+
+def difcuSumario(r): return 'dificuSumario' in r
+
+def criaSumAuto(r): return 'criaSumarioAuto' in r
+
+
+utW = list(i.split(',')[2].split(';').count('Word') for i in espaco).count(1)
+
+cSAuto = list(i.split(',')[4].split(';').count('Criação automática de sumários') for i in espaco).count(1)
+
+difi = list(i.split(',')[3].split(';').count('Criação de sumários') for i in espaco).count(1)
+
+PDUtilizaWord = funcoes.ProbDist(
+    restante=(len(espaco) - 1)-utW,
+    usaWord=list(i.split(',')[2].split(';').count('Word') for i in espaco).count(1)
+
+)
+
+PDDificuldades = funcoes.ProbDist(
+    restante=(len(espaco) - 1) - difi,
+    dificuSumario=difi
+)
+
+
+
+PEUtilizaWordDificuSumario = funcoes.joint(PDUtilizaWord, PDDificuldades)
+
+
+PA = funcoes.P(utilizaWord, PEUtilizaWordDificuSumario)
+
+PE = funcoes.P(difcuSumario, PEUtilizaWordDificuSumario)
+
+probQt2 = PA * PE / PE
+print("Probabilidade é de: %.1f%%" % (probQt2 * 100))
