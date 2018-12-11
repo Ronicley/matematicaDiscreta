@@ -12,7 +12,8 @@ QDHomensMulheres = funcoes.ProbDist(
 )
 
 probSexoMascu = funcoes.P(probH,QDHomensMulheres)
-print("1. Probabilidade é de: %.1f%%" % (probSexoMascu * 100), ".Por tanto a possibilidade de que 1 dessas 72 pessoas ser homem é de %.1f%%" % (probSexoMascu * 100))
+print("1. Probabilidade é de: %.1f%%" % (probSexoMascu * 100), ".\n
+    Por tanto a possibilidade de que 1 dessas 72 pessoas ser homem é de %.1f%%" % (probSexoMascu * 100))
 
 print("\n")
 
