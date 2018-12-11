@@ -3,10 +3,7 @@ from fractions import Fraction
 
 arq = open('TrabalhosAcadêmicos.csv', 'r', encoding="utf-8")
 espaco = arq.readlines()
-"""
-R1: Considerando o espaço amostral de 71 pessoas e que 1 dessas tem de ser do 
-sexo masculino, fazemos a divisão de 1 para 71, o que resulta em 0.14 ou 14%.
-"""
+
 def probH(r): return 'sexo_m' in r
 
 QDHomensMulheres = funcoes.ProbDist(
