@@ -4,15 +4,18 @@ from fractions import Fraction
 arq = open('TrabalhosAcadêmicos.csv', 'r', encoding="utf-8")
 espaco = arq.readlines()
 """
-R1: Considerando o espaço amostral de 72 pessoas e que 1 dessas tem de ser do 
-sexo masculino, fazemos a divisão de 1 para 72, o que resulta em 0.14 ou 14%.
+R1: Considerando o espaço amostral de 71 pessoas e que 1 dessas tem de ser do 
+sexo masculino, fazemos a divisão de 1 para 71, o que resulta em 0.14 ou 14%.
 """
-evento = {'sexo_m'}
+def probH(r): return 'sexo_m' in r
 
-prob1_M = float(Fraction(len(evento), len(espaco) - 1))
+QDHomensMulheres = funcoes.ProbDist(
+    sexo_m=98419000,
+    sexo_f=104772000
+)
 
-print("1. Probabilidade é de: %.1f%%" % (prob1_M * 100),
-      ".Por tanto a possibilidade de que 1 dessas 72 pessoas ser homem é de 1.4%")
+probSexoMascu = funcoes.P(probH,QDHomensMulheres)
+print("1. Probabilidade é de: %.1f%%" % (probSexoMascu * 100), ".Por tanto a possibilidade de que 1 dessas 72 pessoas ser homem é de %.1f%%" % (probSexoMascu * 100))
 
 print("\n")
 
@@ -171,6 +174,7 @@ probQt2 = funcoes.P(nUtiDocsNemWord, funcoes.tal_que(ensSupIncOUCompleto, PDEnsi
 print("Probabilidade é de: %.1f%%" % (probQt2 * 100))
 
 print("7. Dado que uma pessoa indique que utilize o ambiente Word qual os dois problemas com maiores probabilidades -- e quais seriam elas?")
+
 '''
 def utizaWord(r): return 'ultWord' in r
 def probMaiorFreq(r): return 'probMFreq' in r
